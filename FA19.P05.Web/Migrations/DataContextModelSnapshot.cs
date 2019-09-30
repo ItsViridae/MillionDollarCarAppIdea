@@ -260,21 +260,6 @@ namespace FA19.P05.Web.Migrations
                     b.ToTable("InventoryOption");
                 });
 
-            modelBuilder.Entity("FA19.P05.Web.Features.ShoppingCart.CustomerInventoryItem", b =>
-                {
-                    b.Property<int>("InventoryItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("InventoryItemId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("CustomerInventoryItem");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -432,21 +417,6 @@ namespace FA19.P05.Web.Migrations
                     b.HasOne("FA19.P05.Web.Features.Dealerships.Dealership", "Dealership")
                         .WithMany()
                         .HasForeignKey("DealershipId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("FA19.P05.Web.Features.ShoppingCart.CustomerInventoryItem", b =>
-                {
-                    b.HasOne("FA19.P05.Web.Features.Inventory.InventoryItem", "InventoryItem")
-                        .WithMany("Users")
-                        .HasForeignKey("InventoryItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FA19.P05.Web.Features.Authorization.User", "User")
-                        .WithMany("InventoryItems")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

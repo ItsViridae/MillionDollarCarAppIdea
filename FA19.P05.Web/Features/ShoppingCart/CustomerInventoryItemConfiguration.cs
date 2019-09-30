@@ -18,7 +18,7 @@ namespace FA19.P05.Web.Features.ShoppingCart
     //            .HasForeignKey(x => x.InventoryItemId);
 
     //        builder.HasOne(x => x.User)
-    //            .WithMany(x => x.InventoryItems)
+    //            .WithMany(x => x.ShoppingCartItems)
     //            .HasForeignKey(x => x.UserId);
     //    }
     //}

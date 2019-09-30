@@ -8,6 +8,6 @@ namespace FA19.P05.Web.Features.Authorization
     {
         public string Name { get; set; }
         public virtual ICollection<UserRole> Roles { get; set; } = new List<UserRole>();
-        //public virtual ICollection<CustomerInventoryItem> InventoryItems { get; set; } = new List<CustomerInventoryItem>();
+        //public virtual ICollection<CustomerInventoryItem> ShoppingCartItems { get; set; } = new List<CustomerInventoryItem>();
     }
 }
