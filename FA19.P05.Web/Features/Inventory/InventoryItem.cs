@@ -23,6 +23,6 @@ namespace FA19.P05.Web.Features.Inventory
 
         public int DealershipId { get; set; }
         public virtual Dealership Dealership { get; set; }
-        //public virtual ICollection<CustomerInventoryItem> Users { get; set; } = new List<CustomerInventoryItem>();
+        public virtual ICollection<CustomerInventoryItem> Users { get; set; } = new List<CustomerInventoryItem>();
     }
 }

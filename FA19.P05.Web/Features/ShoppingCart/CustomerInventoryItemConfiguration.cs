@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace FA19.P05.Web.Features.ShoppingCart
 {
-    //public class CustomerInventoryItemConfiguration : IEntityTypeConfiguration<CustomerInventoryItem>
-    //{
-    //    public void Configure(EntityTypeBuilder<CustomerInventoryItem> builder)
-    //    {
-    //        builder.HasKey(x => new { x.InventoryItemId, x.UserId });
+    public class CustomerInventoryItemConfiguration : IEntityTypeConfiguration<CustomerInventoryItem>
+    {
+        public void Configure(EntityTypeBuilder<CustomerInventoryItem> builder)
+        {
+            builder.HasKey(x => new { x.InventoryItemId, x.UserId });
 
-    //        builder.HasOne(x => x.InventoryItem)
-    //            .WithMany(x => x.Users)
-    //            .HasForeignKey(x => x.InventoryItemId);
+            builder.HasOne(x => x.InventoryItem)
+                .WithMany(x => x.Users)
+                .HasForeignKey(x => x.InventoryItemId);
 
-    //        builder.HasOne(x => x.User)
-    //            .WithMany(x => x.ShoppingCartItems)
-    //            .HasForeignKey(x => x.UserId);
-    //    }
-    //}
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.InventoryItems)
+                .HasForeignKey(x => x.UserId);
+        }
+    }
 }
