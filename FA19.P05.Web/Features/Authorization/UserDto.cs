@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FA19.P05.Web.Features.Inventory;
+using System.Collections.Generic;
 
 namespace FA19.P05.Web.Features.Authorization
 {
@@ -7,5 +8,6 @@ namespace FA19.P05.Web.Features.Authorization
         public int Id { get; set; }
         public string Email { get; set; }
         public List<RoleDto> Roles { get; set; } = new List<RoleDto>();
+        //public List<InventoryItemDto> ShoppingCartItems { get; set; } = new List<InventoryItemDto>();
     }
 }

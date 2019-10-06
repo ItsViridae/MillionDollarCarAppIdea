@@ -1,0 +1,7 @@
+{
+  "name": "MillionDollarDealership",
+  "version": "1.0.0",
+  "description": "Car Dealership",
+  "main": "index.js",
+  "license": "MIT"
+}
