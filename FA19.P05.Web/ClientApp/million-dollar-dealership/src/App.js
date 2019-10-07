@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import Navbar from "./Navbar";
+import { BrowserRouter as Route, Switch  } from 'react-router-dom'
+import { withRouter } from "react-router"
+import Navbar from "./Navbar"
+import CreateCustomer from "./Component/CreateUser"
+import Authentication from './Component/Authentication'
 
 class App extends Component{
     render(){
         return(
-            <BrowserRouter>
-                <div className="App">
-                    <Navbar />
-                </div>
-            </BrowserRouter>
+            <div className="App">
+                <Navbar />
+                <Switch>
+                    <Route path="/Authentication">
+                        <Authentication />
+                    </Route>
+                    <Route path="/Customer">
+                        <CreateCustomer />
+                    </Route>
+                </Switch>
+            </div>
         );
     }
 }
-
-
-export default App;
+export default withRouter(App);
