@@ -12,13 +12,14 @@ const Signup = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://localhost:44356/api/Customer/SignUp', customerSignUp)
+        axios.post('https://localhost:44356/api/Customer', customerSignUp)
             .then(function (response) {
+                setCustomerSignUp(response.data)
             console.log(response)
             })
             .catch(function (error) {
                 console.log(error)
-            })
+            });
     }
 
     return (
