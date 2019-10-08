@@ -107,12 +107,11 @@ namespace FA19.P05.Web
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
-            /* app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints =>
             {
                 // see: https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio#mvc-controllers
                 endpoints.MapControllers();
             });
-            */
         }
 
         private static async Task SeedUsers(IApplicationBuilder app)
