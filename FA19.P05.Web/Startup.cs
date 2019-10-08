@@ -50,7 +50,6 @@ namespace FA19.P05.Web
             });
 
             services.AddControllers();
-            services.AddCors();
 
             // See: https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.0&tabs=visual-studio
             services.AddSwaggerGen(c =>
