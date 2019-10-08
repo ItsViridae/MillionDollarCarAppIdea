@@ -50,6 +50,7 @@ namespace FA19.P05.Web
             });
 
             services.AddControllers();
+            services.AddCors();
 
             // See: https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.0&tabs=visual-studio
             services.AddSwaggerGen(c =>
@@ -64,6 +65,8 @@ namespace FA19.P05.Web
 
             // See: https://fluentvalidation.net/aspnet#asp-net-core
             services.AddValidatorsFromAssembly(webAssembly);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -100,11 +103,17 @@ namespace FA19.P05.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            /* app.UseEndpoints(endpoints =>
             {
                 // see: https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio#mvc-controllers
                 endpoints.MapControllers();
             });
+            */
         }
 
         private static async Task SeedUsers(IApplicationBuilder app)
