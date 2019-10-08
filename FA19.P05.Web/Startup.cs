@@ -64,6 +64,8 @@ namespace FA19.P05.Web
 
             // See: https://fluentvalidation.net/aspnet#asp-net-core
             services.AddValidatorsFromAssembly(webAssembly);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,6 +106,11 @@ namespace FA19.P05.Web
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
