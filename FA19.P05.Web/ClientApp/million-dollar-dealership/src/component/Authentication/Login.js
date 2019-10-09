@@ -9,16 +9,15 @@ const Login = () => {
     
     const handleChange = (event) => {
         setCustomerLogin({...customerLogin, [event.target.name]: event.target.value})
-        console.log(customerLogin)
     }
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://localhost:44356/api/Authentication', customerLogin)
+        axios.post('/api/Authentication', customerLogin)
             .then(function (response) {
                 setCustomerLogin(response.data)
                 console.log(response)
-                return <Redirect to='/'/>
+                return <Redirect to='/App'/>
             })
             .catch(function (error) {
                 console.log(error)
@@ -37,7 +36,7 @@ const Login = () => {
                     <input type="password" name="password" onChange={handleChange}/>
                 </div>
                 <div className="input-field"> 
-                    <button className="btn blue lighten-1">Login</button>
+                    <button className="btn blue darken-3" type="submit">Login</button>
                 </div>
             </form>
         </div>

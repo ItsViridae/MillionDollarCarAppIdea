@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Navbar from './Layout/Navbar'
-import Signup from './Authentication/Signup'
-import Login from './Authentication/Login'
+import Navbar from './component/Layout/Navbar'
+import Signup from './component/Authentication/Signup'
+import Login from './component/Authentication/Login'
 
 function App() {
     return(

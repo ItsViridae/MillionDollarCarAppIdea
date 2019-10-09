@@ -12,7 +12,7 @@ const Signup = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://localhost:44356/api/Customer', customerSignUp)
+        axios.post('/api/Customer', customerSignUp)
             .then(function (response) {
                 setCustomerSignUp(response.data)
             console.log(response)
