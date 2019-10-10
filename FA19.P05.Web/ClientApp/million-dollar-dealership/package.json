@@ -4,9 +4,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+<<<<<<< HEAD
+=======
+    "cors": "^2.8.5",
+>>>>>>> 002dfefe22fd7cfcb9b3603dc5235d8975c6a4c5
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-router-dom": "^5.1.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2"
   },
   "scripts": {
