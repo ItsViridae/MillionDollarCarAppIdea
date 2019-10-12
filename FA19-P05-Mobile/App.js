@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import { StackNavigator } from "react-navigation";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#007c91" barStyle="light-content" />
-        <Login />
+        <Signup />
       </View>
     );
   }

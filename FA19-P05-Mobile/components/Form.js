@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity
+} from "react-native";
 import { bold, italic } from "ansi-colors";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 export default class Form extends Component {
   render() {
     return (
@@ -16,10 +21,11 @@ export default class Form extends Component {
           style={styles.inputBox}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholder="Password"
+          secureTextEntry={true}
           placeholderTextColor="#ffffff"
         />
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 200,
-    backgroundColor: "rgba(225,255,255,0.3)",
+    backgroundColor: "#007c91",
     borderRadius: 25,
     marginVertical: 10,
     paddingVertical: 10
