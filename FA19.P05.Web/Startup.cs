@@ -107,15 +107,16 @@ namespace FA19.P05.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-
             app.UseEndpoints(endpoints =>
             {
                 // see: https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio#mvc-controllers
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(x =>
+            {
+                x.Options.SourcePath = "ClientApp";
+                x.UseProxyToSpaDevelopmentServer("http://localhost:3000");
             });
         }
 
