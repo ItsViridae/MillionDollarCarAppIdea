@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <nav className="nav-wrapper blue darken-4">
             <div className="container">
-                <Link to='/' className="brand-logo left">Million Dollar Dealership</Link>
+                <Link to='/' className="brand-logo left">Cars4U</Link>
                 {/* Attempting to create state change of navbar upon userLogin
                     {(Login.customerLogin !== '') ? (*/}
                     <SignedOutLinks />
