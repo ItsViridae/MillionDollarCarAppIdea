@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Logo from "./Logo";
 import Form from "./Form";
+import Signup from "./Signup";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 export default class Login extends React.Component {
   render() {
     return (
@@ -9,8 +12,13 @@ export default class Login extends React.Component {
         <Logo />
         <Form type="Login" />
         <View style={styles.signupTextCont}>
-          <Text style={styles.signupText}>Don't have an account yet?</Text>
-          <Text style={styles.signupButton}> Signup</Text>
+          <Text style={styles.signupText}>Don't have an account yet? </Text>
+          <Text
+            style={styles.signupButton}
+            onPress={() => this.props.navigation.navigate("Signup")}
+          >
+            Signup
+          </Text>
         </View>
       </View>
     );
