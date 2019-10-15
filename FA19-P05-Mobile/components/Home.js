@@ -4,7 +4,7 @@ import Header from './Sections/Header';
 import Logo from "./Logo";
 import { Menu } from './Menu';
 
-export class Home extends React.Component{
+export class Home extends React.Component {
     render(){
         return (
             <View>
