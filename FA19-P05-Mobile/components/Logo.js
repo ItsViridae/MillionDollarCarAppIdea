@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     fontSize: 18,
     fontWeight: "bold",
-    color: "rgba(255, 255, 255, 0.7)"
+    color: "#ffffff"
   }
 });
