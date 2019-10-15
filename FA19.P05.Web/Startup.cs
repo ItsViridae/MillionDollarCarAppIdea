@@ -64,6 +64,8 @@ namespace FA19.P05.Web
 
             // See: https://fluentvalidation.net/aspnet#asp-net-core
             services.AddValidatorsFromAssembly(webAssembly);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -109,6 +111,12 @@ namespace FA19.P05.Web
             {
                 // see: https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio#mvc-controllers
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(x =>
+            {
+                x.Options.SourcePath = "ClientApp";
+                x.UseProxyToSpaDevelopmentServer("http://localhost:3000");
             });
         }
 
