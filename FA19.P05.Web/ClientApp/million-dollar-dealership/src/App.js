@@ -1,25 +1,19 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Route, Switch  } from 'react-router-dom'
-import { withRouter } from "react-router"
-import Navbar from "./Navbar"
-import CreateCustomer from "./Component/CreateUser"
-import Authentication from './Component/Authentication'
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import Navbar from './component/Layout/Navbar'
+import Signup from './component/Authentication/Signup'
+import Login from './component/Authentication/Login'
 
-class App extends Component{
-    render(){
-        return(
-            <div className="App">
-                <Navbar />
-                <Switch>
-                    <Route path="/Authentication">
-                        <Authentication />
-                    </Route>
-                    <Route path="/Customer">
-                        <CreateCustomer />
-                    </Route>
-                </Switch>
-            </div>
-        );
-    }
+function App() {
+    return(
+        <div className="App">
+            <Navbar />
+            <Switch>
+                <Route path='/login' component={Login}/>                    
+                <Route path='/signup'component={Signup}/>
+            </Switch>
+        </div>
+    );
 }
-export default withRouter(App);
+
+export default App

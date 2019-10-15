@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import ApiService from '../apiService/apiService'
-import API_ENDPOINTS from './../endpoints/endpoints'
+import ApiService from './apiService/apiService'
+import API_ENDPOINTS from './endpoints/endpoints'
 
 
 export default class Authentication extends Component {
