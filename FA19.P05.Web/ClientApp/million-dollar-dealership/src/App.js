@@ -1,8 +1,9 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Navbar from './component/Layout/Navbar'
-import Signup from './component/Authentication/Signup'
-import Login from './component/Authentication/Login'
+import Navbar from './Component/Layout/Navbar'
+import Signup from './Component/Authentication/Signup'
+import Login from './Component/Authentication/Login'
+import CarQuery from './testCarApi/CarQuery'
 
 function App() {
     return(
@@ -10,7 +11,8 @@ function App() {
             <Navbar />
             <Switch>
                 <Route path='/login' component={Login}/>                    
-                <Route path='/signup'component={Signup}/>
+                <Route path='/signup' component={Signup}/>
+                <Route path='/inventory' component={CarQuery}/>
             </Switch>
         </div>
     );
