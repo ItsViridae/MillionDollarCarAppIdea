@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SignedOutLinks from './SignedOutLinks'
+import SignedInLinks from './SignedInLinks'
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
     return (
         <nav className="nav-wrapper">
             <div className="container">
                 <Link to='/' className="brand-logo left">Cars4U</Link>
-                    <SignedOutLinks />             
+                {isLoggedIn ? <SignedInLinks/> : <SignedOutLinks/>}            
             </div>
         </nav>
     )

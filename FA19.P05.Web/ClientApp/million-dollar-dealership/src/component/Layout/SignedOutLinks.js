@@ -7,7 +7,6 @@ const SignedOutLinks = () => {
             <li><Link to='/'>About</Link></li>
             <li><Link to='/inventory'>Inventory</Link></li>
             <li><Link to='/'>Contact</Link></li>
-            <li><Link to='/signup'>Signup</Link></li>
             <li><Link to='/login'>Login</Link></li>
         </ul>
     )
