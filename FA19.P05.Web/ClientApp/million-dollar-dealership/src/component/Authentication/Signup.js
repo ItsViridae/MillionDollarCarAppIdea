@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Button } from 'reactstrap'
 
 const Signup = () => {
     const [customerSignUp, setCustomerSignUp] = useState([
@@ -43,7 +44,7 @@ const Signup = () => {
                     <input type="text" name="username" onChange={handleChange} required/>
                 </div>
                 <div className="input-field"> 
-                    <button className="btn blue darken-3">Sign Up</button>
+                    <Button className='btn' color='info' type='submit' >Sign Up</Button>
                 </div>
             </form>
         </div>

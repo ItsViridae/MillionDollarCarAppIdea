@@ -4,15 +4,10 @@ import SignedOutLinks from './SignedOutLinks'
 
 const Navbar = () => {
     return (
-        <nav className="nav-wrapper blue darken-4">
+        <nav className="nav-wrapper">
             <div className="container">
                 <Link to='/' className="brand-logo left">Cars4U</Link>
-                {/* Attempting to create state change of navbar upon userLogin
-                    {(Login.customerLogin !== '') ? (*/}
-                    <SignedOutLinks />
-                {/*}) : (
-                    <SignedInLinks />
-                )}*/}
+                    <SignedOutLinks />             
             </div>
         </nav>
     )
