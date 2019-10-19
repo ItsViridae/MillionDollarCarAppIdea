@@ -4,7 +4,8 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  KeyboardAvoidingView
 } from "react-native";
 import { bold, italic } from "ansi-colors";
 export default class Form extends Component {
@@ -32,10 +33,14 @@ export default class Form extends Component {
   }
 }
 const styles = StyleSheet.create({
+  keyboard: {
+    flex: 1
+  },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "flex-end",
+    alignItems: "center",
+    padding: 24
   },
   inputBox: {
     width: 300,
@@ -45,7 +50,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     color: "#ffffff",
     marginVertical: 8,
-    fontStyle: "italic"
+    fontStyle: "italic",
+    justifyContent: "flex-end"
   },
   button: {
     width: 200,
