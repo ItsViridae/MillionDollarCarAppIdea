@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import Logo from "../components/Logo.js";
 export default class Home_Activity extends Component {
   static navigationOptions = {
-    title: "Profile Activity"
+    title: "Home Activity"
   };
 
   render() {
@@ -19,7 +19,7 @@ export default class Home_Activity extends Component {
             style={styles.button}
             onPress={() => this.props.navigation.navigate("Settings")}
           >
-            <Text style={styles.text}>Go to settngs Tab</Text>
+            <Text style={styles.text}>Go to settings Tab</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
