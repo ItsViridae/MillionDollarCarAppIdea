@@ -8,7 +8,7 @@ const Navbar = ({ isLoggedIn }) => {
         <nav className="nav-wrapper">
             <div className="container">
                 <Link to='/' className="brand-logo left">Cars4U</Link>
-                {isLoggedIn ? <SignedInLinks/> : <SignedOutLinks/>}            
+                {isLoggedIn ? <SignedInLinks/> : <SignedOutLinks/>}           
             </div>
         </nav>
     )

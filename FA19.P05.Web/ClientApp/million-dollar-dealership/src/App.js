@@ -5,21 +5,19 @@ import Signup from "./component/Authentication/Signup";
 import Login from "./component/Authentication/Login";
 
 function App() {
-  const [customerLogin, setCustomerLogin] = useState([
-    { username: "", password: "" }
-  ]);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="App">
-      <Navbar isLoggedIn={!!customerLogin} />
+      <Navbar isLoggedIn={isLoggedIn}/>
       <Switch>
         <Route path="/signup" component={Signup} />
         <Route
           path="/login"
           render={() => (
             <Login
-              customerLogin={customerLogin}
-              setCustomerLogin={setCustomerLogin}
+              setIsLoggedIn={setIsLoggedIn}
             />
           )}
         />
