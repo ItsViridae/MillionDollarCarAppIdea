@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import PeopleListTest from "../components/PeopleListTest";
 
 export default class SearchScreen extends Component {
   static navigationOptions = {
@@ -10,8 +10,10 @@ export default class SearchScreen extends Component {
   render() {
     return (
       <View style={styles.MainContainer}>
-        <Text style={{ marginTop: 40, fontSize: 20 }}>Search Screen</Text>
-
+        <PeopleListTest />
+        <Text style={{ marginTop: 40, fontSize: 20 }}>Search Screen
+        </Text>
+        
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate("Home")}
