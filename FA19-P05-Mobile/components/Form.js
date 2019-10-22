@@ -12,6 +12,7 @@ export default class Form extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <KeyboardAvoidingView >
         <TextInput
           style={styles.inputBox}
           underlineColorAndroid="rgba(0,0,0,0)"
@@ -24,7 +25,7 @@ export default class Form extends Component {
           placeholder="Password"
           secureTextEntry={true}
           placeholderTextColor="#ffffff"
-        />
+        /></KeyboardAvoidingView>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>
