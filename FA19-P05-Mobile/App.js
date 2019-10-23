@@ -72,10 +72,10 @@ const SettingsTab = createStackNavigator(
 
 const MainApp = createBottomTabNavigator(
   {
+    Search: SearchTab,
     Home: HomeTab,
-    Settings: SettingsTab,
     Cart: CartTab,
-    Search: SearchTab
+    Settings: SettingsTab
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
