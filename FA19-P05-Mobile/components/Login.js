@@ -2,10 +2,32 @@ import React, { Component } from "react";
 import Logo from "./Logo";
 import Form from "./Form";
 import Signup from "./Signup";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  Animated,
+  Keyboard
+} from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 export default class Login extends React.Component {
+  componentWillMount() {
+    this.keyboardDidShowSub = Keyboard.addListener(
+      "keyboardDidShow",
+      this.handleKeyboardDidShow
+    );
+    this.keyboardDidHideSub = Keyboard.addListener(
+      "keyboardDidHide",
+      this.handleKeyboardDidHide
+    );
+  }
+
+  componentWillUnmount() {
+    this.keyboardDidShowSub.remove();
+    this.keyboardDidHideSub.remove();
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -23,6 +45,35 @@ export default class Login extends React.Component {
       </View>
     );
   }
+  handleKeyboardDidShow = event => {
+    const { height: windowHeight } = Dimensions.get("window");
+    const keyboardHeight = event.endCoordinates.height;
+    const currentlyFocusedField = TextInputState.currentlyFocusedField();
+    UIManager.measure(
+      currentlyFocusedField,
+      (originX, originY, width, height, pageX, pageY) => {
+        const fieldHeight = height;
+        const fieldTop = pageY;
+        const gap = windowHeight - keyboardHeight - (fieldTop + fieldHeight);
+        if (gap >= 0) {
+          return;
+        }
+        Animated.timing(this.state.shift, {
+          toValue: gap,
+          duration: 1000,
+          useNativeDriver: true
+        }).start();
+      }
+    );
+  };
+
+  handleKeyboardDidHide = () => {
+    Animated.timing(this.state.shift, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true
+    }).start();
+  };
 }
 
 const styles = StyleSheet.create({

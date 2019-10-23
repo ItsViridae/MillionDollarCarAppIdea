@@ -12,11 +12,16 @@ code {
     monospace;
 }
 
+nav {
+  background-color: #26a69a;
+}
+
 form {
   padding: 20px;
-  margin-top: 30px;
+  margin: 120px;
 }
 
 form h5, form button{
   margin: 20px 0;
 }
+
