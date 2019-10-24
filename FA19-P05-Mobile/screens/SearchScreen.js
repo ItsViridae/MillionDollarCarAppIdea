@@ -1,23 +1,49 @@
 import React, { Component } from "react";
 
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Image
+} from "react-native";
 
 export default class SearchScreen extends Component {
   static navigationOptions = {
-    title: "Search"
+    title: "Search",
+    header: null
   };
 
   render() {
     return (
       <View style={styles.MainContainer}>
-        <Text style={{ marginTop: 40, fontSize: 20 }}>Search Screen</Text>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate("Home")}
+        <View
+          style={{
+            height: 63,
+            justifyContent: "center",
+            backgroundColor: "#006978",
+            paddingHorizontal: 5,
+            marginTop: 25
+          }}
         >
-          <Text style={styles.text}>Go to Home Tab</Text>
-        </TouchableOpacity>
+          <View
+            style={{
+              height: 45,
+              backgroundColor: "white",
+              flexDirection: "row",
+              padding: 5,
+              alignItems: "center",
+              borderRadius: 35
+            }}
+          >
+            <Image
+              source={require("./images/Search.png")}
+              style={{ width: 24, height: 24 }}
+            />
+            <TextInput placeholder="Search" style={{ fontSize: 16 }} />
+          </View>
+        </View>
       </View>
     );
   }
@@ -25,10 +51,7 @@ export default class SearchScreen extends Component {
 const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00acc1",
-    padding: 11
+    backgroundColor: "#00acc1"
   },
 
   button: {
