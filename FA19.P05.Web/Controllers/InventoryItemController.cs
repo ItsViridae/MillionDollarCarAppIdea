@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using FA19.P05.Web.Data;
 using FA19.P05.Web.Features.Inventory;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -63,14 +65,13 @@ namespace FA19.P05.Web.Controllers
             return Ok(mapper.Map<InventoryItemDto>(inventoryItem));
         }
 
-
         [HttpPost]
         [ProducesResponseType(typeof(InventoryItemDto), 200)]
         [ProducesResponseType(typeof(ValidationProblemDetails), 400)]
         public async Task<ActionResult<InventoryItemDto>> Post(CreateInventoryItemDto dto)
         {
             var inventoryItem = mapper.Map<InventoryItem>(dto);
-            dataContext.Add(inventoryItem);
+            await dataContext.AddAsync(inventoryItem);
             await dataContext.SaveChangesAsync();
             return Ok(mapper.Map<InventoryItemDto>(inventoryItem));
         }
