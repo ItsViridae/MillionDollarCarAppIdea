@@ -6,13 +6,63 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  Image
+  Image,
+  FlatList,
+  Keyboard
 } from "react-native";
+import * as Animatable from "react-native-animatable";
+
+const listItems = [
+  "Toyota",
+  "Acura",
+  "Audi",
+  "Mercedez",
+  "BMW",
+  "Honda",
+  "Ford",
+  "Cadilac",
+  "Nissan",
+  "Lexus"
+];
 
 export default class SearchScreen extends Component {
   static navigationOptions = {
     title: "Search",
     header: null
+  };
+  state = {
+    searchBarFocused: false
+  };
+  componentDidMount() {
+    this.keyboardDidShow = Keyboard.addListener(
+      "keyboardDidShow",
+      this.keyboardDidShow
+    );
+    this.keyboardDidHide = Keyboard.addListener(
+      "keyboardDidHide",
+      this.keyboardDidHide
+    );
+    this.keyboardWillShow = Keyboard.addListener(
+      "keyboardWillShow",
+      this.keyboardWillShow
+    );
+    this.keyboardWillHide = Keyboard.addListener(
+      "keyboardWillHide",
+      this.keyboardWillHide
+    );
+  }
+
+  keyboardDidShow = () => {
+    this.setState({ searchBarFocused: true });
+  };
+  keyboardDidHide = () => {
+    this.setState({ searchBarFocused: false });
+  };
+  keyboardWillShow = () => {
+    this.setState({ searchBarFocused: true });
+  };
+  keyboardWillHide = () => {
+    this.setState({ searchBarFocused: false });
   };
 
   render() {
@@ -27,7 +77,9 @@ export default class SearchScreen extends Component {
             marginTop: 25
           }}
         >
-          <View
+          <Animatable.View
+            animation="slideInRight"
+            duration={500}
             style={{
               height: 45,
               backgroundColor: "white",
@@ -37,21 +89,42 @@ export default class SearchScreen extends Component {
               borderRadius: 35
             }}
           >
-            <Image
-              source={require("./images/Search.png")}
-              style={{ width: 24, height: 24 }}
+            <Animatable.View
+              animation={
+                this.state.searchBarFocused ? "fadeInLeft" : "fadeInRight"
+              }
+            >
+              <Image
+                source={require("./images/Search.png")}
+                style={{ width: 24, height: 24 }}
+              />
+            </Animatable.View>
+            <TextInput
+              placeholder="Search"
+              style={{ fontSize: 18, marginLeft: 10, flex: 1 }}
             />
-            <TextInput placeholder="Search" style={{ fontSize: 16 }} />
-          </View>
+          </Animatable.View>
         </View>
+        <FlatList
+          style={{
+            backgroundColor: this.state.searchBarFocused
+              ? "rgba(0,0,0,0.3)"
+              : "white"
+          }}
+          data={listItems}
+          renderItem={({ item }) => (
+            <Text style={{ padding: 20, fontSize: 20 }}>{item}</Text>
+          )}
+          keyExtractor={(item, index) => index.toString()}
+        />
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    flex: 1,
-    backgroundColor: "#00acc1"
+    flex: 1
+    //backgroundColor: "#00acc1"
   },
 
   button: {
