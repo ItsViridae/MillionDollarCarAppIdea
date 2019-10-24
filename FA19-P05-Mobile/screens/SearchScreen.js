@@ -22,7 +22,7 @@ export default class SearchScreen extends Component {
           style={{
             height: 63,
             justifyContent: "center",
-            backgroundColor: "#006978",
+            backgroundColor: "#00838f",
             paddingHorizontal: 5,
             marginTop: 25
           }}

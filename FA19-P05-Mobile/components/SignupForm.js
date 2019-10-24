@@ -38,6 +38,13 @@ export default class Form extends Component {
             secureTextEntry={true}
             placeholderTextColor="#ffffff"
           />
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Confirmed Password"
+            secureTextEntry={true}
+            placeholderTextColor="#ffffff"
+          />
         </KeyboardAvoidingView>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>{this.props.type}</Text>
