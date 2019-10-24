@@ -4,38 +4,41 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  KeyboardAvoidingView
 } from "react-native";
 import { bold, italic } from "ansi-colors";
 export default class Form extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          style={styles.inputBox}
-          underlineColorAndroid="rgba(0,0,0,0)"
-          placeholder="Username"
-          placeholderTextColor="#ffffff"
-        />
-        <TextInput
-          style={styles.inputBox}
-          underlineColorAndroid="rgba(0,0,0,0)"
-          placeholder="Email"
-          placeholderTextColor="#ffffff"
-        />
-        <TextInput
-          style={styles.inputBox}
-          underlineColorAndroid="rgba(0,0,0,0)"
-          placeholder="Name"
-          placeholderTextColor="#ffffff"
-        />
-        <TextInput
-          style={styles.inputBox}
-          underlineColorAndroid="rgba(0,0,0,0)"
-          placeholder="Password"
-          secureTextEntry={true}
-          placeholderTextColor="#ffffff"
-        />
+        <KeyboardAvoidingView>
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Username"
+            placeholderTextColor="#ffffff"
+          />
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Email"
+            placeholderTextColor="#ffffff"
+          />
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Name"
+            placeholderTextColor="#ffffff"
+          />
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Password"
+            secureTextEntry={true}
+            placeholderTextColor="#ffffff"
+          />
+        </KeyboardAvoidingView>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>

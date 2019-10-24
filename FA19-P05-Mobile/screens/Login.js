@@ -1,27 +1,30 @@
 import React, { Component } from "react";
-import Logo from "./Logo";
-import Form from "./SignupForm";
+import Logo from "../components/Logo";
+import Form from "../components/Form";
+import Signup from "./Signup";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
-export default class Signup extends React.Component {
+export default class Login extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} hideNavBar>
         <Logo />
-        <Form type="Signup" />
+        <Form type="Login" />
         <View style={styles.signupTextCont}>
-          <Text style={styles.signupText}>Already have an account?</Text>
+          <Text style={styles.signupText}>Don't have an account yet? </Text>
           <Text
             style={styles.signupButton}
-            onPress={() => this.props.navigation.navigate("Login")}
+            onPress={() => this.props.navigation.navigate("Signup")}
           >
-            {" "}
-            Sign in
+            Signup
           </Text>
         </View>
       </View>
     );
   }
 }
+Login.navigationOptions = {
+  header: null
+};
 
 const styles = StyleSheet.create({
   container: {
