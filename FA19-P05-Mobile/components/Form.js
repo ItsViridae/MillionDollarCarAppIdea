@@ -25,6 +25,7 @@ export default class Form extends Component {
       this.setState({ Error: "Password cannot be empty." });
     } else {
       alert("Your form is submitted.");
+      this.setState({ Error: "" });
     }
     Keyboard.dismiss();
   };
