@@ -5,28 +5,54 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Keyboard
 } from "react-native";
 import { bold, italic } from "ansi-colors";
 export default class Form extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: "",
+      passWord: ""
+    };
+  }
+  myValidation = () => {
+    const { userName, passWord } = this.state;
+    if (userName == "") {
+      this.setState({ Error: "User name cannot be empty." });
+    } else if (passWord == "") {
+      this.setState({ Error: "Password cannot be empty." });
+    } else {
+      alert("Your form is submitted.");
+    }
+    Keyboard.dismiss();
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <KeyboardAvoidingView >
-        <TextInput
-          style={styles.inputBox}
-          underlineColorAndroid="rgba(0,0,0,0)"
-          placeholder="Username"
-          placeholderTextColor="#ffffff"
-        />
-        <TextInput
-          style={styles.inputBox}
-          underlineColorAndroid="rgba(0,0,0,0)"
-          placeholder="Password"
-          secureTextEntry={true}
-          placeholderTextColor="#ffffff"
-        /></KeyboardAvoidingView>
-        <TouchableOpacity style={styles.button}>
+        <Text style={{ color: "red", textAlign: "center" }}>
+          {this.state.Error}
+        </Text>
+        <KeyboardAvoidingView>
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Username"
+            placeholderTextColor="#ffffff"
+            onChangeText={value => this.setState({ userName: value })}
+          />
+          <TextInput
+            style={styles.inputBox}
+            underlineColorAndroid="rgba(0,0,0,0)"
+            placeholder="Password"
+            secureTextEntry={true}
+            placeholderTextColor="#ffffff"
+            onChangeText={value => this.setState({ passWord: value })}
+          />
+        </KeyboardAvoidingView>
+        <TouchableOpacity style={styles.button} onPress={this.myValidation}>
           <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>
       </View>
