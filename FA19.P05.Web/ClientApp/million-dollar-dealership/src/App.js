@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Navbar from "./component/Layout/Navbar";
 import Signup from "./component/Authentication/Signup";
 import Login from "./component/Authentication/Login";
+import InventoryList from "./component/Pages/InventoryList";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <Navbar isLoggedIn={isLoggedIn}/>
       <Switch>
+        <Route path="/inventory" component={InventoryList} />
         <Route path="/signup" component={Signup} />
         <Route
           path="/login"
