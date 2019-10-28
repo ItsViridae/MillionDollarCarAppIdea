@@ -64,3 +64,13 @@ button {
         background: rgb(189, 189, 189);
         cursor: default;
     }
+
+.return-image {
+    height: 200px;
+    width: auto;
+}
+
+.AllImages {
+    height: 200px;
+    width: auto;
+}

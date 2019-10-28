@@ -11,13 +11,56 @@ class Upload extends Component {
             uploading: false,
             uploadProgress: {},
             successfullUploaded: false,
-            message: ''
+            message: '',
+            imageUrl: '',
+            images: []
         };
 
         this.onFilesAdded = this.onFilesAdded.bind(this);
         this.uploadFiles = this.uploadFiles.bind(this);
         this.sendRequest = this.sendRequest.bind(this);
         this.renderActions = this.renderActions.bind(this);
+    }
+
+    componentDidMount() {
+        this.getImageById();
+        this.getAllImages();
+    }
+
+    async getImageById(id) {
+        await fetch(`https://localhost:44356/api/Image/${id}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/octet-stream'
+            },
+          })
+            .then(response => {
+                if (response.url) {
+                    this.setState({ imageUrl: response.url })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    async getAllImages(){
+        await fetch(`https://localhost:44356/api/Image/`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/octet-stream'
+            },
+          })
+            .then(response => {
+                return response.json();
+            })
+            .then(response => {
+                console.log(response);
+                this.setState({images: response});
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     onFilesAdded(files) {
@@ -129,6 +172,20 @@ class Upload extends Component {
         return (
             <div className="Upload">
                 <span className="Title">Upload Files</span>
+                {/*<div>
+                //renders one image
+                    <img className="return-image" src={this.state.imageUrl} alt="shit"/>
+                </div> */}
+                {/* <div>
+                //This is how you can map through many images
+                    {this.state.images.map(imageString => {
+                        return (
+                            <div key={imageString}>
+                                <img className="return-image" src={`data:image/jpeg;base64,${imageString}`} alt="done" />
+                            </div>
+                        );
+                    })}
+                    </div> */}
                 <div className="Content">
                     <div>
                         <Dropzone

@@ -13,7 +13,7 @@ code {
 }
 
 nav {
-  background-color: #26a69a;
+  background-color: #00acc1;
 }
 
 form {
@@ -25,3 +25,6 @@ form h5, form button{
   margin: 20px 0;
 }
 
+.grid-list-tile {
+    height: inherit !important;
+}

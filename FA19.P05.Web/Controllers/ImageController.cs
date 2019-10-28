@@ -1,9 +1,13 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using FA19.P05.Web.Data;
 using FA19.P05.Web.Features.Inventory;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FA19.P05.Web.Controllers
 {
@@ -68,6 +72,28 @@ namespace FA19.P05.Web.Controllers
             var response = File(ms, "application/octet-stream", image.FileName);
 
             return response;
+        }
+
+        //GetAll
+        [HttpGet]
+        public async Task<IActionResult> GetFiles()
+        {
+            var images = await dataContext.Set<Image>().ToListAsync();
+            var imagesAsBase64 = new List<string>();
+
+            await using (var ms = new MemoryStream())
+            {
+                foreach (var image in images)
+                {
+                    ms.Write(image.ImageBytes, 0, image.ImageBytes.Length);
+                    imagesAsBase64.Add(Convert.ToBase64String(ms.ToArray()));
+
+                    ms.Position = 0;
+                    ms.Flush();
+                }
+            }
+
+            return Ok(imagesAsBase64);
         }
     }
 }
