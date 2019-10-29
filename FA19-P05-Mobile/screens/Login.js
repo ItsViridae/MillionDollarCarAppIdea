@@ -2,30 +2,22 @@ import React, { Component } from "react";
 import Logo from "../components/Logo";
 import Form from "../components/Form";
 import Signup from "./Signup";
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  KeyboardAvoidingView
-} from "react-native";
+import { StyleSheet, Text, View, StatusBar } from "react-native";
 export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container} hideNavBar>
-        <KeyboardAvoidingView behavior="position">
-          <Logo />
-          <Form type="Login" />
-          <View style={styles.signupTextCont}>
-            <Text style={styles.signupText}>Don't have an account yet? </Text>
-            <Text
-              style={styles.signupButton}
-              onPress={() => this.props.navigation.navigate("Signup")}
-            >
-              Signup
-            </Text>
-          </View>
-        </KeyboardAvoidingView>
+        <Logo />
+        <Form type="Login" />
+        <View style={styles.signupTextCont}>
+          <Text style={styles.signupText}>Don't have an account yet? </Text>
+          <Text
+            style={styles.signupButton}
+            onPress={() => this.props.navigation.navigate("Signup")}
+          >
+            Signup
+          </Text>
+        </View>
       </View>
     );
   }
