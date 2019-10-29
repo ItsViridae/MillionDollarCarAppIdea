@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(/img/Background.jpg) no-repeat;
+  background-size: 100%;
 }
 
 code {
@@ -13,18 +15,68 @@ code {
 }
 
 nav {
-  background-color: #00acc1;
+  background-color: #337ab7;
+}
+
+nav .brand-logo{
+  color: whitesmoke;
+  font-family: sans-serif;
+  font-style: italic;
 }
 
 form {
-  padding: 20px;
-  margin: 120px;
+  background-color: white;
+  margin-top: 80px;
+  margin-left: 350px;
+  margin-right: 350px;
+  border-radius: 3px;
 }
 
-form h5, form button{
-  margin: 20px 0;
+form label {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  font-weight: 700;
 }
 
+form .input-field {
+
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+}
+
+form button {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
 .grid-list-tile {
-    height: inherit !important;
+  height: inherit !important;
+}
+
+.btn {
+  color: whitesmoke;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  font-weight: bold;
+}
+
+h5 {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;;
+}
+
+img {
+  padding: 10px;
+  margin-left: 120px;
+}
+
+nav ul a {
+  color: whitesmoke;
+  font-size: large;
+  font-family: Arial;
+  font-weight: bold;
 }
