@@ -1,26 +1,26 @@
-import axios from "axios";
+import axios from 'axios'
 import React, { useState } from 'react'
-import { Button } from 'reactstrap'
 
-const Login = ({isLoggedIn, setIsLoggedIn}) => {
 
-  const [customerLogin, setCustomerLogin] = useState(null);
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
+
+  const [adminLogin, setAdminLogin] = useState(null);
 
   const handleChange = event => {
-    setCustomerLogin({...customerLogin, [event.target.name]: event.target.value});
+    setAdminLogin({...adminLogin, [event.target.name]: event.target.value});
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(customerLogin)
+    console.log(adminLogin)
 
     axios
-      .post("/api/Authentication", customerLogin)
+      .post("/api/Authentication", adminLogin)
       .then(function(response) {
         if (response.status === 200) {
           setIsLoggedIn(true);
         }
-        setCustomerLogin(response.data);
+        setAdminLogin(response.data);
         console.log(response);
       })
       .catch(function(error) {
@@ -29,18 +29,18 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
   };
   return (
     <div className="container">
-      <form onSubmit={handleSubmit} className="white">
-        <h5 className="grey-text.text-darken-3">Login</h5>
-        <div className="input-field center">
+      <form method='get' onSubmit={handleSubmit}>
+        <h5 className="center">Cars4U Administration</h5>
+        <div className="input-field">
+          <input type="text" name="username" className="validate" required onChange={handleChange} />
           <label htmlFor="username">Username</label>
-          <input type="text" name="username" onChange={handleChange} />
-        </div>
-        <div className="input-field center">
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" onChange={handleChange} />
         </div>
         <div className="input-field">
-          <Button className="btn" color='info' type="submit">Login</Button>
+        <input type="password" name="password" className="validate" required onChange={handleChange} />
+          <label htmlFor="password">Password</label>
+        </div>
+        <div className="input-field center">
+          <button className='btn' type='submit'>Login</button>
         </div>
       </form>
     </div>
