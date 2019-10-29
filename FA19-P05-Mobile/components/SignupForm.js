@@ -22,7 +22,7 @@ export default class Form extends Component {
   handleSubmit = () => {
     const { password, confirmPassword } = this.state;
     // perform all neccassary validations
-    if (password !== confirmPassword) {
+    if (password != confirmPassword) {
       this.setState({ Error: "Passwords don't match" });
     } else {
       this.setState({ Error: "" });
@@ -70,7 +70,7 @@ export default class Form extends Component {
           placeholderTextColor="#ffffff"
           onChangeText={value => this.setState({ confirmPassword: value })}
         />
-        <TouchableOpacity style={styles.button} onChange={this.handleSubmit}>
+        <TouchableOpacity style={styles.button} onPress={this.handleSubmit}>
           <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>
       </View>

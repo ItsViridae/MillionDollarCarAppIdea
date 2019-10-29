@@ -39,6 +39,13 @@ var flatListData = [
     description: "One of the best compact car",
     imageUrl:
       "https://danhgiaxe.net/wp-content/uploads/2019/05/Honda-Civic-2019-1.jpg"
+  },
+  {
+    key: "6134529813",
+    name: "Cadillac",
+    description: "American Luxury",
+    imageUrl:
+      "https://image.businessinsider.com/5bfd90ddb73c281aea7263e6?width=1100&format=jpeg&auto=webp"
   }
 ];
 module.exports = flatListData;
