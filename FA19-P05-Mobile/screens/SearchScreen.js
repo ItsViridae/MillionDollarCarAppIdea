@@ -11,6 +11,7 @@ import {
   Keyboard
 } from "react-native";
 import * as Animatable from "react-native-animatable";
+import flatListData from "../data/flatListData";
 
 const listItems = [
   "Toyota",
@@ -24,7 +25,37 @@ const listItems = [
   "Nissan",
   "Lexus"
 ];
-
+class FlatListItem extends Component {
+  render() {
+    return (
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column"
+        }}
+      >
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <Image
+            source={{ uri: this.props.item.imageUrl }}
+            style={{ width: 180, height: 120, margin: 6 }}
+          ></Image>
+          <View style={{ flex: 1, flexDirection: "column" }}>
+            <Text style={styles.flatListName}>{this.props.item.name}</Text>
+            <Text style={styles.flatListDescription}>
+              {this.props.item.description}
+            </Text>
+          </View>
+        </View>
+        <View
+          style={{
+            height: 1,
+            backgroundColor: "black"
+          }}
+        ></View>
+      </View>
+    );
+  }
+}
 export default class SearchScreen extends Component {
   static navigationOptions = {
     title: "Search",
@@ -111,11 +142,15 @@ export default class SearchScreen extends Component {
               ? "rgba(0,0,0,0.3)"
               : "white"
           }}
-          data={listItems}
-          renderItem={({ item }) => (
-            <Text style={{ padding: 20, fontSize: 20 }}>{item}</Text>
-          )}
-          keyExtractor={(item, index) => index.toString()}
+          //data={listItems}
+          //renderItem={({ item }) => (
+          //  <Text style={{ padding: 20, fontSize: 20 }}>{item}</Text>
+          //)}
+          //keyExtractor={(item, index) => index.toString()}
+          data={flatListData}
+          renderItem={({ item, index }) => {
+            return <FlatListItem item={item} index={index}></FlatListItem>;
+          }}
         />
       </View>
     );
@@ -137,5 +172,14 @@ const styles = StyleSheet.create({
 
   text: {
     color: "#fff"
+  },
+  flatListDescription: {
+    padding: 15,
+    fontSize: 18
+  },
+  flatListName: {
+    padding: 15,
+    fontSize: 18,
+    fontWeight: "bold"
   }
 });
