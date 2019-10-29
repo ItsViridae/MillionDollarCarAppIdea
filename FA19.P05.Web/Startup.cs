@@ -40,6 +40,7 @@ namespace FA19.P05.Web
                 .AddRoles<Role>()
                 .AddEntityFrameworkStores<DataContext>();
 
+
             services.ConfigureApplicationCookie(options =>
             {
                 options.Events.OnRedirectToLogin = context =>
