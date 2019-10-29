@@ -20,7 +20,7 @@ export default class Form extends Component {
     };
   }
   handleSubmit = () => {
-    const { password, confirmPassword } = this.state;
+    const { password, confirmPassword, userName, email, name } = this.state;
     // perform all neccassary validations
     if (password != confirmPassword) {
       this.setState({ Error: "Passwords don't match" });
@@ -40,18 +40,21 @@ export default class Form extends Component {
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholder="Username"
           placeholderTextColor="#ffffff"
+          onChangeText={value => this.setState({ userName: value })}
         />
         <TextInput
           style={styles.inputBox}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholder="Email"
           placeholderTextColor="#ffffff"
+          onChangeText={value => this.setState({ email: value })}
         />
         <TextInput
           style={styles.inputBox}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholder="Name"
           placeholderTextColor="#ffffff"
+          onChangeText={value => this.setState({ name: value })}
         />
         <TextInput
           style={styles.inputBox}

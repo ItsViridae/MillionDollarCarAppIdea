@@ -8,7 +8,7 @@ import {
   KeyboardAvoidingView,
   Keyboard
 } from "react-native";
-import { bold, italic } from "ansi-colors";
+import { withFormik } from "formik";
 export default class Form extends Component {
   constructor(props) {
     super(props);
@@ -19,10 +19,12 @@ export default class Form extends Component {
   }
   myValidation = () => {
     const { userName, passWord } = this.state;
-    if (userName == "") {
-      this.setState({ Error: "User name cannot be empty." });
+    if (passWord == "" && userName == "") {
+      this.setState({ Error: "Both user name and password cannot be empty." });
     } else if (passWord == "") {
       this.setState({ Error: "Password cannot be empty." });
+    } else if (userName == "") {
+      this.setState({ Error: "User name cannot be empty." });
     } else {
       alert("Your form is submitted.");
       this.setState({ Error: "" });
@@ -33,27 +35,41 @@ export default class Form extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ color: "red", textAlign: "center" }}>
+        <TextInput
+          style={styles.inputBox}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          placeholder="Username"
+          placeholderTextColor="#ffffff"
+          // onChangeText={username =>
+          //   this.props.setFieldValue("Username", username)
+          //}
+          onChangeText={value => this.setState({ userName: value })}
+        />
+        <Text style={{ color: "red", textAlign: "center", fontSize: 16 }}>
           {this.state.Error}
         </Text>
-        <KeyboardAvoidingView>
-          <TextInput
-            style={styles.inputBox}
-            underlineColorAndroid="rgba(0,0,0,0)"
-            placeholder="Username"
-            placeholderTextColor="#ffffff"
-            onChangeText={value => this.setState({ userName: value })}
-          />
-          <TextInput
-            style={styles.inputBox}
-            underlineColorAndroid="rgba(0,0,0,0)"
-            placeholder="Password"
-            secureTextEntry={true}
-            placeholderTextColor="#ffffff"
-            onChangeText={value => this.setState({ passWord: value })}
-          />
-        </KeyboardAvoidingView>
-        <TouchableOpacity style={styles.button} onPress={this.myValidation}>
+
+        <TextInput
+          style={styles.inputBox}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          placeholder="Password"
+          secureTextEntry={true}
+          placeholderTextColor="#ffffff"
+          // onChangeText={password =>
+          //   this.props.setFieldValue("Password", password)
+          // }
+          onChangeText={value => this.setState({ passWord: value })}
+        />
+        {/* <Text style={{ color: "red", textAlign: "center" }}>
+          {this.props.errors.password}
+        </Text> */}
+        <TouchableOpacity
+          style={styles.button}
+          // onPress={() => {
+          //   this.props.handleSubmit;
+          // }}
+          onPress={this.myValidation}
+        >
           <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>
       </View>
@@ -95,3 +111,21 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
+// export default withFormik({
+//   mapPropsToValues: () => ({ username: "", passWord: "" }),
+//   validate: (values, props) => {
+//     const errors = {};
+//     if (!values.username) {
+//       errors.username = "User name cannot be empty.";
+//     } else{
+//       errors.username ="";
+//     }
+//     if (!values.password) {
+//       errors.password = "Password cannot be empty.";
+//     }
+//     return errors;
+//   },
+//   handleSubmit: (values, { props }) => {
+//     console.log(values);
+//   }
+// })(Form);
