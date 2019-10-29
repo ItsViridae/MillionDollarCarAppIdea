@@ -4,6 +4,7 @@ import Navbar from "./component/Layout/Navbar"
 import Signup from "./component/Authentication/Signup";
 import Login from "./component/Authentication/Login";
 import InventoryList from "./component/Pages/InventoryList";
+import Upload from './component/Pages/Upload';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Switch>
+        <Route path="/upload" component={Upload} />
         <Route path="/inventory" component={InventoryList} />
         <Route path="/signup" component={Signup} />
         <Route

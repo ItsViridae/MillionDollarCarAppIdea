@@ -21,6 +21,7 @@ const SignedInLinks = ({ setIsLoggedIn }) => {
 
     return (
         <ul className="right">
+            <li><NavLink to='/upload'>Upload</NavLink></li>
             <li><NavLink to='/inventory'>Inventory</NavLink></li>
             <li><NavLink to='/users'>Users</NavLink></li>
             <li><NavLink to='/login' onClick={handleLogout}>Logout</NavLink></li>

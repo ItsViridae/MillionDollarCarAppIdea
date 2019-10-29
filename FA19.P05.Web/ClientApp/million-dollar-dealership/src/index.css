@@ -50,6 +50,9 @@ form button {
   margin-top: 30px;
   margin-bottom: 20px;
 }
+.grid-list-tile {
+  height: inherit !important;
+}
 
 .btn {
   color: whitesmoke;
