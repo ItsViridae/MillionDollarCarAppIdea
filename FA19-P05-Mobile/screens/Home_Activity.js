@@ -11,7 +11,6 @@ export default class Home_Activity extends Component {
     return (
       <View style={styles.MainContainer}>
         <Logo />
-
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
@@ -53,7 +52,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#006978",
     padding: 12,
     width: 280,
-    marginTop: 12
+    marginTop: 12,
+    borderRadius: 25
   },
 
   text: {

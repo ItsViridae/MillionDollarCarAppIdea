@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import Logo from "../components/Logo";
 import Form from "../components/SignupForm";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { StyleSheet, Text, View, StatusBar, KeyboardAvoidingView } from "react-native";
 export default class Signup extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <KeyboardAvoidingView behavior="position">
         <Logo />
         <Form type="Signup" />
+        
         <View style={styles.signupTextCont}>
           <Text style={styles.signupText}>Already have an account?</Text>
           <Text
@@ -17,7 +19,7 @@ export default class Signup extends React.Component {
             {" "}
             Sign in
           </Text>
-        </View>
+        </View></KeyboardAvoidingView>
       </View>
     );
   }

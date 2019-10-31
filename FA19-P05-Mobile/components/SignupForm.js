@@ -4,30 +4,57 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  KeyboardAvoidingView
 } from "react-native";
 import { bold, italic } from "ansi-colors";
 export default class Form extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: "",
+      email: "",
+      name: "",
+      password: "",
+      confirmedPassword: ""
+    };
+  }
+  handleSubmit = () => {
+    const { password, confirmPassword, userName, email, name } = this.state;
+    // perform all neccassary validations
+    if (password != confirmPassword) {
+      this.setState({ Error: "Passwords don't match" });
+    } else {
+      this.setState({ Error: "" });
+      // some API call
+    }
+  };
   render() {
     return (
       <View style={styles.container}>
+        <Text style={{ color: "red", textAlign: "center" }}>
+          {this.state.Error}
+        </Text>
         <TextInput
           style={styles.inputBox}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholder="Username"
           placeholderTextColor="#ffffff"
+          onChangeText={value => this.setState({ userName: value })}
         />
         <TextInput
           style={styles.inputBox}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholder="Email"
           placeholderTextColor="#ffffff"
+          onChangeText={value => this.setState({ email: value })}
         />
         <TextInput
           style={styles.inputBox}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholder="Name"
           placeholderTextColor="#ffffff"
+          onChangeText={value => this.setState({ name: value })}
         />
         <TextInput
           style={styles.inputBox}
@@ -35,8 +62,18 @@ export default class Form extends Component {
           placeholder="Password"
           secureTextEntry={true}
           placeholderTextColor="#ffffff"
+          onChangeText={value => this.setState({ password: value })}
+          //onChange={this.handleSubmit}
         />
-        <TouchableOpacity style={styles.button}>
+        <TextInput
+          style={styles.inputBox}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          placeholder="Confirmed Password"
+          secureTextEntry={true}
+          placeholderTextColor="#ffffff"
+          onChangeText={value => this.setState({ confirmPassword: value })}
+        />
+        <TouchableOpacity style={styles.button} onPress={this.handleSubmit}>
           <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>
       </View>
